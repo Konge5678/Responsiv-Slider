@@ -5,7 +5,9 @@ import './index.css'
 import ImageSlider from './ImageSlider.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <ImageSlider />
+  
+  <React.StrictMode >
+    <ImageSlider/>
   </React.StrictMode>,
+
 )

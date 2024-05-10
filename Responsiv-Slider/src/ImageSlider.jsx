@@ -3,9 +3,9 @@ import React, { useState, useEffect } from 'react';
 function ImageSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
-    { type: 'image', content: 'https://cataas.com/cat' },
+    { type: 'image', content: '/NorwayPicture.jpeg' },
     { type: 'api', content: async () => {
-      // Fetch data from API and return JSX
+  
     }},
     { type: 'video', content: 'url3' }
   ];
@@ -46,15 +46,21 @@ function ImageSlider() {
         <div className="flex justify-between items-center w-full">
           <button className="py-2 px-4 text-white bg-blue-500 rounded-md" onClick={prevSlide}>Previous</button>
           <div className="w-full sm:w-96 h-64 sm:h-96 rounded-md bg-blue-600 relative">
-            <div className="w-full h-full absolute">
-              {slides[currentSlide].type === 'image' && <img src={content} alt="" className="w-full h-full object-cover rounded-md" />}
-            </div>
-            <div className="absolute">
-              {slides[currentSlide].type === 'api' && content}
-            </div>
-            <div className="absolute">
-              {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
-            </div>
+          <div className="w-full h-full relative">
+            {slides[currentSlide].type === 'image' && (
+              <> 
+                <img src={content} alt="" className="w-full h-full object-cover rounded-md" />
+                <p className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2">Couple on trolltunga in Norway by <a href="https://stock.adobe.com/no/contributor/201224144/alex-koch?load_type=author&prev_url=detail" target="_blank" rel="noopener noreferrer" className='text-blue-500'>Alex Koch</a></p>
+              </>
+            )}
+            {slides[currentSlide].type === 'api' && (
+              <>
+                {content}
+                <p>hei</p>
+              </>
+            )}
+            {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
+          </div>
           </div>
           <button className="py-2 px-4 text-white bg-blue-500 rounded-md" onClick={nextSlide}>Next</button>
         </div>
@@ -66,13 +72,19 @@ function ImageSlider() {
       </div>
       <div className="sm:hidden flex flex-col items-center w-full mt-5">
         <div className="w-full h-64 rounded-md bg-blue-600 relative">
-          <div className="w-full h-full absolute">
-            {slides[currentSlide].type === 'image' && <img src={content} alt="" className="w-full h-full object-cover rounded-md" />}
-          </div>
-          <div className="absolute">
-            {slides[currentSlide].type === 'api' && content}
-          </div>
-          <div className="absolute">
+        <div className="w-full h-full relative">
+            {slides[currentSlide].type === 'image' && (
+              <> 
+                <img src={content} alt="" className="w-full h-full object-cover rounded-md" />
+                <p className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2">Couple on trolltunga in Norway by <a href="https://stock.adobe.com/no/contributor/201224144/alex-koch?load_type=author&prev_url=detail" target="_blank" rel="noopener noreferrer" className='text-blue-500'>Alex Koch</a></p>
+              </>
+            )}
+            {slides[currentSlide].type === 'api' && (
+              <>
+                {content}
+                <p>hei</p>
+              </>
+            )}
             {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
           </div>
         </div>

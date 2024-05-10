@@ -25,8 +25,8 @@ function ImageSlider() {
   }
 
   useEffect(() => {
-    if (window.innerWidth <= 768) { // Check if device width is less than or equal to 768px
-      if (navigator.geolocation) { // Check if Geolocation is supported
+    if (window.innerWidth <= 768) { 
+      if (navigator.geolocation) { 
         navigator.geolocation.getCurrentPosition((position) => {
           setLocation({
             latitude: position.coords.latitude,
@@ -108,6 +108,7 @@ function ImageSlider() {
             )}
             {slides[currentSlide].type === 'api' && (
                 <>
+                <p className='text-2xl font-bold text-center mb-4'>Your Gps Loacation Is</p>
                 <div className="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2">
                   <p> {location ? `Latitude: ${location.latitude}` : 'Loading location...'} </p>
                   <p> {location ? `Longitude: ${location.longitude}` : 'Loading location...'} </p>

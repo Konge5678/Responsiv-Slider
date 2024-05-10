@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
 function ImageSlider() {
+  const [location, setLocation] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
   const slides = [
     { type: 'image', content: '/NorwayPicture.jpeg' },
     { type: 'api', content: async () => {
       const response1 = await fetch('https://api.chucknorris.io/jokes/random');
       const joke1 = await response1.json();
-    
+      
       return joke1.value;
     }},
     { type: 'video', content: 'url3' }
@@ -24,8 +25,25 @@ function ImageSlider() {
   }
 
   useEffect(() => {
+    if (window.innerWidth <= 768) { // Check if device width is less than or equal to 768px
+      if (navigator.geolocation) { // Check if Geolocation is supported
+        navigator.geolocation.getCurrentPosition((position) => {
+          setLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
+        });
+      } else {
+        console.log("Geolocation is not supported by this browser.");
+      }
+    }
+  }, []);
+  
+
+  useEffect(() => {
     updateContent(currentSlide);
   }, [currentSlide]);
+  
 
   const nextSlide = () => {
     setCurrentSlide(prevSlide => {
@@ -48,7 +66,7 @@ function ImageSlider() {
       <div className="hidden sm:flex flex-col items-center w-full">
         <div className="flex justify-between items-center w-full">
           <button className="py-2 px-4 text-white bg-blue-500 rounded-md" onClick={prevSlide}>Previous</button>
-          <div className="w-full sm:w-96 h-64 sm:h-96 rounded-md bg-blue-600 relative">
+          <div className="w-full sm:w-96 h-64 sm:h-96 rounded-md bg-blue-800 relative">
           <div className="w-full h-full relative">
             {slides[currentSlide].type === 'image' && (
               <> 
@@ -57,10 +75,17 @@ function ImageSlider() {
               </>
             )}
             {slides[currentSlide].type === 'api' && (
-            <>
-              <p>{content}</p>
-            </>
-          )}
+                <>
+                  <p className='text-2xl font-bold text-center mb-4'>Chuck Norris Jokes</p>
+                  <div className="flex justify-center  items-center mb-4">
+                    <img className='w-32 h-32 object-cover' src="/ChuckNorris.png" alt="Chuck Norris" />
+                  </div>
+                  <div className="absolute bottom-0 w-full bg-blue-500 text-white p-4 rounded-lg max-h-52 overflow-auto">
+                    <h2 className='text-m font-semibold'>Joke:</h2>
+                    <p className='text-m'>{content}</p>
+                  </div>
+                </>
+              )}
             {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
           </div>
           </div>
@@ -82,11 +107,13 @@ function ImageSlider() {
               </>
             )}
             {slides[currentSlide].type === 'api' && (
-              <>
-
-                <p>hei</p>
-              </>
-            )}
+                <>
+                <div className="absolute bottom-0 w-full bg-black bg-opacity-50 text-white p-2">
+                  <p> {location ? `Latitude: ${location.latitude}` : 'Loading location...'} </p>
+                  <p> {location ? `Longitude: ${location.longitude}` : 'Loading location...'} </p>
+                  </div>
+                </>
+              )}
             {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
           </div>
         </div>
@@ -104,4 +131,4 @@ function ImageSlider() {
   );
 }
 
-export default ImageSlider;
+export default ImageSlider;  

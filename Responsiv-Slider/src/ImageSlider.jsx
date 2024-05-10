@@ -5,7 +5,10 @@ function ImageSlider() {
   const slides = [
     { type: 'image', content: '/NorwayPicture.jpeg' },
     { type: 'api', content: async () => {
-  
+      const response1 = await fetch('https://api.chucknorris.io/jokes/random');
+      const joke1 = await response1.json();
+    
+      return joke1.value;
     }},
     { type: 'video', content: 'url3' }
   ];
@@ -50,15 +53,14 @@ function ImageSlider() {
             {slides[currentSlide].type === 'image' && (
               <> 
                 <img src={content} alt="" className="w-full h-full object-cover rounded-md" />
-                <p className="absolute bottom-0 bg-black bg-opacity-50 text-white p-2">Couple on trolltunga in Norway by <a href="https://stock.adobe.com/no/contributor/201224144/alex-koch?load_type=author&prev_url=detail" target="_blank" rel="noopener noreferrer" className='text-blue-500'>Alex Koch</a></p>
+                <p className="absolute bottom-0 bg-black bg-opacity-70 text-white p-2">Couple on trolltunga in Norway by <a href="https://stock.adobe.com/no/contributor/201224144/alex-koch?load_type=author&prev_url=detail" target="_blank" rel="noopener noreferrer" className='text-blue-500'>Alex Koch</a></p>
               </>
             )}
             {slides[currentSlide].type === 'api' && (
-              <>
-                {content}
-                <p>hei</p>
-              </>
-            )}
+            <>
+              <p>{content}</p>
+            </>
+          )}
             {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
           </div>
           </div>
@@ -81,7 +83,7 @@ function ImageSlider() {
             )}
             {slides[currentSlide].type === 'api' && (
               <>
-                {content}
+
                 <p>hei</p>
               </>
             )}

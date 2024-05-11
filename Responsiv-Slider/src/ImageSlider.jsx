@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+
 function ImageSlider() {
   const [location, setLocation] = useState(null);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -11,7 +12,7 @@ function ImageSlider() {
       
       return joke1.value;
     }},
-    { type: 'video', content: 'url3' }
+    { type: 'video', content: 'WtwneW2s2bo' }
   ];
 
   const [content, setContent] = useState(null);
@@ -61,6 +62,8 @@ function ImageSlider() {
     });
   };
 
+  
+
   return (
     <div className="flex flex-col sm:flex-row items-center justify-center bg-gray-200 p-5 space-x-0 sm:space-x-5">
       <div className="hidden sm:flex flex-col items-center w-full">
@@ -86,7 +89,19 @@ function ImageSlider() {
                   </div>
                 </>
               )}
-            {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
+              {slides[currentSlide].type === 'video' && window.innerWidth > 768 && (
+  <div className="relative w-full h-full">
+    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+    </div>
+    <iframe 
+      className="absolute top-0 left-0 w-full h-full"
+      src={`https://www.youtube.com/embed/${content}?autoplay=1`}
+      title="YouTube video player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+    ></iframe>
+  </div>
+)}
           </div>
           </div>
           <button className="py-2 px-4 text-white bg-blue-500 rounded-md" onClick={nextSlide}>Next</button>
@@ -115,7 +130,19 @@ function ImageSlider() {
                   </div>
                 </>
               )}
-            {slides[currentSlide].type === 'video' && <video src={content} className="w-full h-full object-contain" autoPlay loop />}
+            {slides[currentSlide].type === 'video' && window.innerWidth <= 768 && (
+              <div className="w-full h-64 rounded-md bg-blue-600 relative">
+                <div className="w-full h-full relative">
+                  <iframe 
+                    className="absolute top-0 left-0 w-full h-full"
+                    src={`https://www.youtube.com/embed/${content}?autoplay=1`}
+                    title="YouTube video player"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                  ></iframe>
+                </div>
+              </div>
+            )}
           </div>
         </div>
         <div className="flex justify-center space-x-2 p-2">

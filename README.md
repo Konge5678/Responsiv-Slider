@@ -37,10 +37,10 @@ Den andre sliden er fortskjellig for brukeren er på Pc eller telefon/tablet. p�
 navigator.geolocation.getCurrentPosition
 ```
 funksjonen i nettleseren. Denne funksjonen er en del av Geolocation API som er innebygd i de fleste moderne nettlesere.
-[shecodes.io](https://www.shecodes.io/athena/9970-retrieve-user-location-with-geolocation-in-react#:~:text=in%204.33%20seconds-,To%20retrieve%20the%20user's%20current%20location%20using%20geolocation%20in%20React,to%20handle%20the%20error%20case.) og [educative.io](https://www.educative.io/answers/how-to-use-geolocation-call-in-reactjs) var gode ressurser for å lære om p bruke Geolocation API-et. Obs! når du bruker telefon visning på pc hender det seg at du må refreshe siden for å få op gps kordinatene og hvis du hoster den på ip-en din å går inn på telefonen hender det seg at den ikke gir tilgang til gps siden den ser på siden som usikker.
+[shecodes.io](https://www.shecodes.io/athena/9970-retrieve-user-location-with-geolocation-in-react#:~:text=in%204.33%20seconds-,To%20retrieve%20the%20user's%20current%20location%20using%20geolocation%20in%20React,to%20handle%20the%20error%20case.) og [educative.io](https://www.educative.io/answers/how-to-use-geolocation-call-in-reactjs) var gode ressurser for å lære om å bruke Geolocation API-et. Obs! når du bruker telefon visning på pc hender det seg at du må refreshe siden for å få op gps kordinatene og hvis du hoster den på ip-en din å går inn på telefonen hender det seg at den ikke gir tilgang til gps siden den ser på siden som usikker.
 
 Den tredje sliden har en youtube video som blir automatisk avspilt når brukeren er på den sliden. Jeg har gjort dette med å bygge inn youtube videoen i en iframe. den har funksjoner som : autoplay; clipboard-write; encrypted-media; gyroscope; og picture-in-picture"  
-som tilater forskjellige funksjoner i iframe, som autoplay og picture-in-picture. Den har også allowFullScreen som tillater den å bli vist i fullskjerm. 
+som tilater forskjellige funksjoner i iframe, som autoplay og picture-in-picture. Den har også allowFullScreen som tillater den å bli vist i fullskjerm. Obs! noen gange vis du bytter mellom pc og telefon view vil youtube video sliden henge seg opp så man må refreshe
 
 
 

@@ -90,18 +90,18 @@ function ImageSlider() {
                 </>
               )}
               {slides[currentSlide].type === 'video' && window.innerWidth > 768 && (
-  <div className="relative w-full h-full">
-    <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
-    </div>
-    <iframe 
-      className="absolute top-0 left-0 w-full h-full"
-      src={`https://www.youtube.com/embed/${content}?autoplay=1`}
-      title="YouTube video player"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowFullScreen
-    ></iframe>
-  </div>
-)}
+              <div className="relative w-full h-full">
+                <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                </div>
+                <iframe 
+                  className="absolute top-0 left-0 w-full h-full"
+                  src={`https://www.youtube.com/embed/${content}?autoplay=1`}
+                  title="YouTube video player"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            )}
           </div>
           </div>
           <button className="py-2 px-4 text-white bg-blue-500 rounded-md" onClick={nextSlide}>Next</button>
